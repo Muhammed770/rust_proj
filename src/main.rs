@@ -1,29 +1,29 @@
-fn main() {
-    let greetings = String::from("hello world");
-    let first_word = get_first_word(&greetings);
-    // for i in 0..greetings.len()+10 {
-    //     let char1 = greetings.chars().nth(i);
-    //     match char1 {
-    //         Some(c) => print!("{} ", c),
-    //         None => {
-    //             println!();
-    //             println!("no char found at {} :", i);
-    //             break;
-    //         }
-    //     }
-    // }
-    println!();
-    println!("{}",greetings);
-    println!("the first word is :{}", first_word);
-}
+use std::os::unix::fs::PermissionsExt;
 
-fn get_first_word(sentence:&str) -> String {
-    let mut ans = String::new();
-    for c in sentence.chars() {
-        if c.is_whitespace() {
-            break;
+struct  User {
+    name: String,
+    age: u16,
+    email: String
+}
+impl User {
+    fn is_adult(&self) -> bool {
+        if self.age>=18 {
+            return true;
         }
-        ans.push(c)
+        false
     }
-    return ans;
+}
+fn main() {
+    let email = String::from("mail.muhammed2002@gmail.com");
+    let user = User {
+        name:String::from("Muhammed"),
+        age:16,
+        email
+    };
+    println!("{} is {} year old",user.name,user.age);
+    if user.is_adult() {
+        println!("adult pass initiaited!!");
+    } else {
+        println!("access denied,not an adult");
+    }
 }
